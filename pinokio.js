@@ -15,13 +15,36 @@ module.exports = {
       icon: "fa-solid fa-circle-stop",
       text: "stop",
       href: "stop"
+    },
+    {
+      icon: "fa-solid fa-hammer",
+      text: "build",
+      href: "build"
+    },
+    {
+      icon: "fa-solid fa-broom",
+      text: "lint",
+      href: "lint"
     }
   ],
 
   tasks: {
+    setup: {
+      title: "Setup Dependencies",
+      description: "Install project dependencies",
+      run: [
+        {
+          method: "shell.run",
+          params: {
+            message: "npm install"
+          }
+        }
+      ]
+    },
+
     start: {
       title: "Start Charles n Charge",
-      description: "Install dependencies and start the development server",
+      description: "Start the development server (runs on port 3000)",
       run: [
         {
           method: "shell.run",
@@ -40,12 +63,12 @@ module.exports = {
 
     stop: {
       title: "Stop Charles n Charge",
-      description: "Stop the development server",
+      description: "Stop the development server running on port 3000",
       run: [
         {
           method: "shell.run",
           params: {
-            message: "pkill -f 'next dev' || true"
+            message: "lsof -ti:3000 | xargs kill -9 2>/dev/null || true"
           }
         }
       ]
@@ -78,6 +101,19 @@ module.exports = {
           method: "shell.run",
           params: {
             message: "npm run lint || true"
+          }
+        }
+      ]
+    },
+
+    test: {
+      title: "Run Tests",
+      description: "Execute the test suite",
+      run: [
+        {
+          method: "shell.run",
+          params: {
+            message: "npm test"
           }
         }
       ]
