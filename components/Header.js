@@ -9,8 +9,9 @@ export default function Header() {
     <header className="bg-dark-secondary border-b-2 border-neon-green sticky top-0 z-50">
       <nav className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         <Link href="/">
-          <div className="text-3xl font-bold neon-glow cursor-pointer">
-            Charles n Charge
+          <div className="cursor-pointer">
+            <div className="text-3xl font-bold neon-glow">Charles n Charge</div>
+            <div className="text-sm text-neon-green font-semibold">Attention to Detail</div>
           </div>
         </Link>
         
